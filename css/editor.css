@@ -1,0 +1,44 @@
+div#editor-div main input#title-input {
+    width: 96%;
+    margin: 3%;
+    height: 1.3em;
+    flex: none;
+    font-weight: bold;
+    color: #999999;
+    font-family: "EB Garamond";
+    font-size: 1em;
+    padding: 0px;
+    border: none;
+    outline: none;
+    background-color: #2a2a2a;
+}
+
+div#editor-div main input#title-input:focus {
+    border: none;
+    outline: none;
+}
+
+div#editor-div main textarea#body-textarea {
+    width: 94%;
+    flex: auto;
+    background-color: #2a2a2a;
+    color: #999999;
+    margin: 0 3%;
+    padding: 0px;
+    display: inline-block;
+    border: none;
+    font-family: "EB Garamond";
+    outline: none;
+    resize: none;
+    font-size: 1em;
+}
+
+main div#editor-main textarea#body-textarea:focus {
+    border: none;
+    outline: none;
+}
+
+div#editor-div footer button#delete-edited-button {
+    position: fixed;
+    right: 0;
+}

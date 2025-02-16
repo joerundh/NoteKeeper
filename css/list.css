@@ -1,0 +1,61 @@
+div#list-div main div.list-item {
+    width: 94%;
+    height: auto;
+    margin: 3%;
+    color: #2a2a2a;
+    background-color: #999999;
+    border-radius: 0.2em;
+    font-family: "EB Garamond";
+    padding: 0.2em;
+    box-sizing: border-box;
+}
+
+div#list-div main div.list-item header {
+    padding: 0px;
+    margin: 0px;
+    background-color: #999999;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: row;
+}
+
+div#list-div main div.list-item header span.list-item-title-span {
+    flex: auto;
+    margin: 0;
+    color: #2a2a2a;
+    background-color: #999999;
+    text-align: left;
+    font-family: "EB Garamond";
+    font-size: 1em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+div#list-div main div.list-item header button {
+    width: 1.3em;
+    height: 1.3em;
+    flex: none;
+    border-radius: 0.2em;
+    background-color: #999999;
+    color: #2a2a2a;
+    border: none;
+    margin: 0px;
+}
+
+div#list-div main div.list-item main {
+    margin: 0px;
+    padding: 0px;
+    background-color: #999999;
+    text-overflow: ellipsis;
+    color: #2a2a2a;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+div#list-div footer button {
+    right: 0;
+}

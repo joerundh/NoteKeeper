@@ -1,0 +1,111 @@
+@font-face {
+    font-family: "EB Garamond";
+    src: url("./fonts/EBGaramond.ttf");
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #2a2a2a;
+    font-size: 20px;
+}
+
+div {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+div#list-div {
+    display: flex;
+}
+
+div#editor-div {
+    display: none;
+}
+
+div#reader-div {
+    display: none;
+}
+
+div header {
+    width: 100%;
+    height: 2em;
+    border-bottom: 1px solid #999999;
+    background-color: #2a2a2a;
+    flex: none;
+    display: flex;
+    padding: 0px;
+}
+
+div header span {
+    flex: auto;
+    margin: auto 0;
+    text-align: center;
+    padding: 0px;
+    color: #999999;
+    font-family: "EB Garamond";
+}
+
+div header button, div footer button {
+    width: 2em;
+    height: 2em;
+    font-size: 1em;
+    border: none;
+    display: inline-block;
+    background-color: #2A2A2A;
+    color: #999999;
+    margin: 0px;
+    font-size: 1em;
+    flex: none;
+}
+
+div footer button.back-to-footer-button {
+    position: fixed;
+    left: 0;
+}
+
+div main {
+    width: 100%;
+    flex: auto;
+    font-size: 1em;
+    color: #999999;
+    font-family: "EB Garamond";
+}
+
+div main#list-main {
+    overflow-y: auto;
+}
+
+div main#editor-main {
+    display: flex;
+    flex-direction: column;
+}
+
+div main#reader-main {
+    overflow-y: auto;
+    white-space: nowrap;
+}
+
+div main#guide-main {
+    width: 97%;
+    overflow-y: auto;
+    white-space: wrap;
+}
+
+div footer {
+    width: 100;
+    height: 2em;
+    border-top: 1px solid #999999;
+    background-color: #2a2a2a;
+    flex: none;
+    padding: 0px;
+}

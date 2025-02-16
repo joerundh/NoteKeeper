@@ -1,0 +1,29 @@
+div#reader-div header span#title-span {
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    text-align: left;
+}
+
+div#reader-div main pre#body-pre {
+    width: auto;
+    height: auto;
+    margin: 0px;
+    font-size: 1em;
+    font-family: "EB Garamond";
+    color: #999999;
+    display: inline-block;
+    padding: 3%;
+    overflow: auto;
+    white-space: wrap;
+}
+
+div#reader-div footer button#info-button {
+    position: fixed;
+    left: 0;
+}
+
+div#reader-div footer button#delete-read-button {
+    position: fixed;
+    right: 0;
+}
