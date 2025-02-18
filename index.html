@@ -33,7 +33,7 @@
     </div>
     <div id="editor-div">
         <header id="editor-header">
-            <button id="save-button" onclick="save();">&#x1f5ab;</button><span>Edit note</span><button id="close-editor-button">&#x2716;</button>
+            <button id="save-button"">&#x1f5ab;</button><span>Edit note</span><button id="close-editor-button">&#x2716;</button>
         </header>
         <main id="editor-main">
             <input type="text" id="title-input" autocomplete="off">
@@ -45,7 +45,7 @@
     </div>
     <div id="reader-div">
         <header id="reader-header">
-            <button onclick="viewInfo();">&#x1f6c8;</button><span id="title-span"></span><button id="open-in-editor-button">&#x270e;</button>
+            <button onclick="viewInfo();">&#x1f6c8;</button><span id="title-span"></span><button id="open-in-editor-button" onclick="openEditor(reading);">&#x270e;</button>
         </header>
         <main id="reader-main">
             <pre id="body-pre"></pre>

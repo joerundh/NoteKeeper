@@ -1,4 +1,4 @@
-class MessageBox {
+class AlertBox {
     constructor(messageText) {
         this.promptBackground = document.createElement("div");
         this.promptBackground.className = "prompt-background";
@@ -25,9 +25,9 @@ class MessageBox {
     }
 }
 
-class InformationBox extends MessageBox {
-    constructor(infoText) {
-        super(infoText);
+class InfoAlert extends AlertBox {
+    constructor(text) {
+        super(text);
 
         this.promptBackground.addEventListener("click", (event) => {
             this.close();
@@ -46,9 +46,16 @@ class InformationBox extends MessageBox {
     }
 }
 
-class YesNoPromptBox extends MessageBox {
-    constructor(promptText, f1, f2 = () => {}) {
+function informationBox(text) {
+    setTimeout(() => {
+        new InfoAlert(text).open();
+    });
+}
+
+class PromptAlert extends AlertBox {
+    constructor(promptText, f1, f2 = () => {}, f3 = () => {}) {
         super(promptText);
+        this.promptBox.style.userSelect = "none";
         this.promptBox.appendChild(this.footer);
 
         this.yesButton = document.createElement("button");
@@ -69,6 +76,7 @@ class YesNoPromptBox extends MessageBox {
                 this.close();
                 if (event.target.name === "yes-button") f1();
                 else if (event.target.name === "no-button") f2();
+                f3();
             };
             this.yesButton.addEventListener("click", listener);
             this.noButton.addEventListener("click", listener);
@@ -79,4 +87,58 @@ class YesNoPromptBox extends MessageBox {
         this.open();
         await this.responsePromise;
     }
+}
+
+function promptAlert(text, f1, f2 = () => {}, f3 = () => {}) {
+    setTimeout(() => {
+        new PromptAlert(text, f1, f2, f3).open();
+    });
+}
+
+class SmallAlert {
+    constructor(message) {
+        this.alertBox = document.createElement("div");
+        this.alertBox.className = "alert-box";
+        this.alertBox.innerHTML = message;
+    }
+
+    fadeIn() {
+        this.alertBox.style.animationName = "fadeIn";
+        this.alertBox.style.animationIterationCount = 1;
+        this.alertBox.style.animationTimingFunction = "ease-in";
+        this.alertBox.style.animationDuration = "1s";
+    }
+
+    fadeOut() {
+        this.alertBox.style.animationName = "fadeOut";
+        this.alertBox.style.animationIterationCount = 1;
+        this.alertBox.style.animationTimingFunction = "ease-in";
+        this.alertBox.style.animationDuration = "1s";
+    }
+
+    open() {
+        let listener = (event) => {
+            clearTimeout(fadeOutTimeout);
+            document.body.removeChild(this.alertBox);
+            document.body.removeEventListener("click", listener);
+        };
+
+        this.fadeIn();
+        document.body.appendChild(this.alertBox);
+
+        let fadeOutTimeout = setTimeout(() => {
+            this.fadeOut();
+            setTimeout(() => {
+                listener();
+            }, 1000);
+        }, 2000);
+
+        document.body.addEventListener("click", listener);
+    }
+}
+
+function smallAlert(message) {
+    setTimeout(() => {
+        new SmallAlert(message).open();
+    }, 1);
 }

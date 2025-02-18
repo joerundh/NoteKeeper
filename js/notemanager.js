@@ -46,6 +46,7 @@ class NoteManager {
     deleteNote(key) {
         window.localStorage.removeItem(`noteKeeper${key}`);
         this.keys.splice(this.keys.indexOf(key), 1);
+        this.storeKeys();
     }
 
     deleteAllNotes() {

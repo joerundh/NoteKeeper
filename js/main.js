@@ -32,49 +32,51 @@ function setup() {
 
     document.getElementById("delete-all-button").addEventListener("click", (event) => {
         if (noteManager.count() > 0) {
-            new YesNoPromptBox("Are you sure you want to delete all notes?", () => {
-                noteManager.deleteAllNotes();
-                updateList();
-            }, () => {}).run();
+            promptAlert("Delete all notes?",
+                () => {
+                    noteManager.deleteAllNotes();
+                    updateList();
+                    smallAlert("All notes deleted.");
+                });
         }
+    });
+
+    document.getElementById("save-button").addEventListener("click", (event) => {
+        save();
+        smallAlert("Note saved.");
     });
 
     document.getElementById("close-editor-button").addEventListener("click", (event) => {
         if (!changesSaved && (titleEdited || bodyEdited)) {
-            new YesNoPromptBox(`Save ${editing === -1 ? "note" : "changes"} before closing?`, () => {
-                save();
-                closeEditor();
-            }, () => {
-                closeEditor();
-            }).run();
+            promptAlert(`Save ${editing === -1 ? "note" : "changes"} before closing?`,
+                () => {
+                    save();
+                    smallAlert("Note saved.");
+                },
+                () => {},
+                () => {
+                    closeEditor();
+                }
+            );
         } else {
             closeEditor();
         }
     });
 
     document.getElementById("delete-edited-button").addEventListener("click", (event) => {
-        if (editing === -1) {
-            new YesNoPromptBox("Close without saving?", () => {
-                closeEditor();
-            }, () => {}).run();
-        } else {
-            new YesNoPromptBox("Delete this note?", () => {
-                noteManager.deleteNote(editing);
-                closeEditor();
-            }, () => {}).run();
-        }
-    });
-
-    document.getElementById("open-in-editor-button").addEventListener("click", (event) => {
-        editing = reading;
-        openEditor(editing);
+        promptAlert(`Delete ${editing === -1 ? "unsaved" : "this"} note?`, () => {
+            noteManager.deleteNote(editing);
+            closeEditor();
+            smallAlert("Note deleted.");
+        });
     });
 
     document.getElementById("delete-read-button").addEventListener("click", () => {
-        new YesNoPromptBox("Are you sure you want to delete this note?", () => {
+        promptAlert("Delete this note?", () => {
             noteManager.deleteNote(reading);
             closeReader();
-        }, () => {}).run();
+            new SmallAlert("Note deleted.").open();
+        });
     });
 
     titleInput.addEventListener("focus", (event) => {
@@ -108,8 +110,6 @@ function setup() {
     });
 
     noteManager = new NoteManager();
-
-    //localStorage.clear();
 
     openList();
 }

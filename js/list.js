@@ -17,10 +17,11 @@ function createListElement(note) {
     deleteButton.innerHTML = "&#x1f5d1;";
     deleteButton.addEventListener("click", (event) => {
         event.stopPropagation();
-        new YesNoPromptBox("Delete this note?", () => {
+        promptAlert("Delete this note?", () => {
             noteManager.deleteNote(note.key);
             updateList();
-        }).run();
+            smallAlert("Note deleted.")
+        });
     });
     header.appendChild(deleteButton);
 

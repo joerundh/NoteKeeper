@@ -11,8 +11,7 @@ div.prompt-background {
 div.prompt-box {
     width: 80%;
     padding: 3%;
-    top: 50%;
-    transform: translateY(-100%);
+    top: 30%;
     height: fit-content;
     position: absolute;
     margin: 10%;
@@ -70,4 +69,41 @@ div.prompt-box footer button.okay-button {
 div.prompt-box footer button.yes-button,
 div.prompt-box footer button.no-button {
     width: 50%;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+div.alert-box {
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    margin: 0 auto;
+    border: 1px solid #999999;
+    background-color: #2a2a2a;
+    color: #999999;
+    font-family: "EB Garamond";
+    font-size: 1em;
+    top: 3em;
+    border-radius: 0.3em;
+    transform: translateX(-50%);
+    left: 50%;
+    user-select: none;
+    display: inline;
+    padding: 0.2em;
 }
