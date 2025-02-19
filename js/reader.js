@@ -1,17 +1,18 @@
-let reading = -1;
+let reading = 0;
 
 function openReader(key) {
     reading = key;
-    titleSpan.innerHTML = noteManager.getNote(reading).title;
-    bodyPre.innerHTML = noteManager.getNote(reading).body;
+    titleSpan.innerHTML = makePrintable(noteManager.getNote(reading).title);
+    let body = noteManager.getNote(reading).body;
+    bodyDiv.innerHTML += body.slice(1).reduce(
+        (acc, curr) => acc + "<br>" + curr,
+        body[0]);
     viewReader();
 }
 
-function closeReader() {
-    reading = -1;
+function clearReader() {
     titleSpan.innerHTML = "";
-    bodyPre.innerHTML = "";
-    openList();
+    bodyDiv.innerHTML = "";
 }
 
 function viewInfo() {
@@ -23,5 +24,5 @@ function viewInfo() {
     info += "<p><b>Last edited:</b><br>";
     info += `${dateEditedString}</p>`
 
-    new InformationBox(info).open();
+    informationBox(info);
 }

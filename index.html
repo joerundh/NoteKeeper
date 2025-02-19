@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="./css/list.css">
     <link rel="stylesheet" type="text/css" href="./css/editor.css">
     <link rel="stylesheet" type="text/css" href="./css/reader.css">
-    <link rel="stylesheet" type="text/css" href="./css/guide.css">
+    <link rel="stylesheet" type="text/css" href="./css/manual.css">
     <link rel="stylesheet" type="text/css" href="./css/prompts.css">
     
     <script language="javascript" src="./js/main.js"></script>
@@ -28,12 +28,12 @@
         </header>
         <main id="list-main"></main>
         <footer id="list-footer">
-            <button id="guide-button" onclick="viewGuide();">&#x2754;</button>
+            <button id="how-to-button" onclick="viewManual();">&#x2754;</button>
         </footer>
     </div>
     <div id="editor-div">
         <header id="editor-header">
-            <button id="save-button"">&#x1f5ab;</button><span>Edit note</span><button id="close-editor-button">&#x2716;</button>
+            <button id="save-button"">&#x1f5ab;</button><span>Edit note</span><button id="close-button">&#x2716;</button>
         </header>
         <main id="editor-main">
             <input type="text" id="title-input" autocomplete="off">
@@ -45,20 +45,20 @@
     </div>
     <div id="reader-div">
         <header id="reader-header">
-            <button onclick="viewInfo();">&#x1f6c8;</button><span id="title-span"></span><button id="open-in-editor-button" onclick="openEditor(reading);">&#x270e;</button>
+            <button id="info-button">&#x1f6c8;</button><span id="title-span"></span><button id="edit-button">&#x270e;</button>
         </header>
         <main id="reader-main">
-            <pre id="body-pre"></pre>
+            <div id="body-div"></div>
         </main>
         <footer id="reader-footer">
-            <button class="back-to-list-button" onclick="openList();">&#x25c0;</button><button id="delete-read-button">&#x1f5d1;</button>       
+            <button id="back-button">&#x25c0;</button><button id="delete-button">&#x1f5d1;</button>       
         </footer>
     </div>
-    <div id="guide-div">
+    <div id="manual-div">
         <header>
             <span>How to use</span>
         </header>
-        <main id="guide-main">
+        <main id="manual-main">
             <p>
                 <b>When viewing the list:</b>
                 <ul>
@@ -96,12 +96,12 @@
             <p>
                 <b>Please note!</b>
                 <ul>
-                    <li>It it generally not recommended to store any kind of personal information here, as its safety and security cannot be guaranteed. Use with care!</li>
+                    <li>It it not recommended to store any kind of personal information here, as its safety and security cannot be guaranteed. Use with care!</li>
                 </ul>
             </p>
         </main>
         <footer>
-            <button id="open-guide-button" onclick="openList();">&#x25c0;</button>
+            <button id="close-manual-button">&#x25c0;</button>
         </footer>
     </div>
 </body>

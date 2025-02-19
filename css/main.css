@@ -95,7 +95,7 @@ div main#reader-main {
     white-space: nowrap;
 }
 
-div main#guide-main {
+div main#manual-main {
     width: 97%;
     overflow-y: auto;
     white-space: wrap;

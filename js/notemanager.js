@@ -20,6 +20,7 @@ class NoteManager {
             body: body,
             edited: now
         };
+        
         window.localStorage.setItem(`noteKeeper${now}`, JSON.stringify(newNote));
         this.keys.unshift(now);
         this.storeKeys();

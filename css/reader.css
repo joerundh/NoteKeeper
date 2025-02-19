@@ -5,7 +5,7 @@ div#reader-div header span#title-span {
     text-align: left;
 }
 
-div#reader-div main pre#body-pre {
+div#reader-div main div#body-div {
     width: auto;
     height: auto;
     margin: 0px;
@@ -23,7 +23,12 @@ div#reader-div footer button#info-button {
     left: 0;
 }
 
-div#reader-div footer button#delete-read-button {
+div#reader-div footer button#back-button {
+    position: fixed;
+    left: 0;
+}
+
+div#reader-div footer button#delete-button {
     position: fixed;
     right: 0;
 }

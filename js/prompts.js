@@ -119,6 +119,7 @@ class SmallAlert {
     open() {
         let listener = (event) => {
             clearTimeout(fadeOutTimeout);
+            clearTimeout(closeTimeout);
             document.body.removeChild(this.alertBox);
             document.body.removeEventListener("click", listener);
         };
@@ -128,10 +129,11 @@ class SmallAlert {
 
         let fadeOutTimeout = setTimeout(() => {
             this.fadeOut();
-            setTimeout(() => {
-                listener();
-            }, 1000);
         }, 2000);
+        let closeTimeout = setTimeout(() => {
+            document.body.removeChild(this.alertBox);
+            document.body.removeEventListener("click", listener);
+        }, 3000);
 
         document.body.addEventListener("click", listener);
     }

@@ -10,7 +10,7 @@ function createListElement(note) {
 
     let listItemTitleSpan = document.createElement("span");
     listItemTitleSpan.className = "list-item-title-span";
-    listItemTitleSpan.innerHTML = note.title;
+    listItemTitleSpan.innerHTML = makePrintable(note.title);
     header.appendChild(listItemTitleSpan);
 
     let deleteButton = document.createElement("button");
@@ -28,7 +28,7 @@ function createListElement(note) {
     element.appendChild(header);
 
     let main = document.createElement("main");
-    main.innerHTML = note.body;
+    main.innerHTML = makePrintable(note.body[0]);
     element.appendChild(main);
 
     return element;
@@ -46,4 +46,9 @@ function updateList() {
     for (let note of allNotes) {
         listMain.appendChild(createListElement(note));
     }
+}
+
+function makePrintable(str) {
+    return str.replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;");
 }

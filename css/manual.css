@@ -1,0 +1,13 @@
+div#manual-div main p {
+    padding: 3%;
+    width: 94%;
+    box-sizing: border-box;
+    overflow: auto;
+    white-space: wrap;
+    margin: 0px;
+}
+
+div#manual-div main ul {
+    margin: 0;
+    list-style-type: "\2014";
+}

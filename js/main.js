@@ -1,12 +1,12 @@
 let clickManager;
 
-let listDiv, editorDiv, readerDiv, guideDiv;
+let listDiv, editorDiv, readerDiv, manualDiv;
 
 let listMain;
 
 let titleInput, bodyTextarea;
 
-let titleSpan, bodyPre;
+let titleSpan, bodyDiv;
 
 let noteManager;
 
@@ -16,7 +16,7 @@ function setup() {
     listDiv = document.getElementById("list-div");
     editorDiv = document.getElementById("editor-div");
     readerDiv = document.getElementById("reader-div");
-    guideDiv = document.getElementById("guide-div")
+    manualDiv = document.getElementById("manual-div")
 
     listMain = document.getElementById("list-main");
 
@@ -24,7 +24,7 @@ function setup() {
     bodyTextarea = document.getElementById("body-textarea");
 
     titleSpan = document.getElementById("title-span");
-    bodyPre = document.getElementById("body-pre");
+    bodyDiv = document.getElementById("body-div");
 
     document.getElementById("create-new-button").addEventListener("click", (event) => {
         openEditor();
@@ -41,42 +41,68 @@ function setup() {
         }
     });
 
+    document.getElementById("how-to-button").addEventListener("click", (event) => {
+        viewManual();
+    });
+
     document.getElementById("save-button").addEventListener("click", (event) => {
         save();
         smallAlert("Note saved.");
     });
 
-    document.getElementById("close-editor-button").addEventListener("click", (event) => {
+    document.getElementById("close-button").addEventListener("click", (event) => {
         if (!changesSaved && (titleEdited || bodyEdited)) {
-            promptAlert(`Save ${editing === -1 ? "note" : "changes"} before closing?`,
+            promptAlert(`Save ${editing === 0 ? "note" : "changes"} before closing?`,
                 () => {
                     save();
                     smallAlert("Note saved.");
                 },
                 () => {},
                 () => {
-                    closeEditor();
+                    clearEditor();
+                    openList();
                 }
             );
         } else {
-            closeEditor();
+            clearEditor();
+            openList();
         }
     });
 
     document.getElementById("delete-edited-button").addEventListener("click", (event) => {
-        promptAlert(`Delete ${editing === -1 ? "unsaved" : "this"} note?`, () => {
-            noteManager.deleteNote(editing);
-            closeEditor();
+        promptAlert(`Delete ${editing ? "unsaved" : "this"} note?`, () => {
+            if (!editing) noteManager.deleteNote(editing);
+            clearEditor();
+            openList();
             smallAlert("Note deleted.");
         });
     });
 
-    document.getElementById("delete-read-button").addEventListener("click", () => {
+    document.getElementById("info-button").addEventListener("click", (event) => {
+        viewInfo();
+    });
+
+    document.getElementById("edit-button").addEventListener("click", (event) => {
+        openEditor(reading);
+        clearReader();
+    });
+
+    document.getElementById("back-button").addEventListener("click", (event) => {
+        clearReader();
+        openList();
+    });
+
+    document.getElementById("delete-button").addEventListener("click", (event) => {
         promptAlert("Delete this note?", () => {
             noteManager.deleteNote(reading);
-            closeReader();
-            new SmallAlert("Note deleted.").open();
+            clearReader();
+            openList();
+            smallAlert("Note deleted.")
         });
+    });
+
+    document.getElementById("close-manual-button").addEventListener("click", (event) => {
+        openList();
     });
 
     titleInput.addEventListener("focus", (event) => {
@@ -117,27 +143,27 @@ function setup() {
 function viewList() {
     editorDiv.style.display = "none";
     readerDiv.style.display = "none";
-    guideDiv.style.display = "none";
+    manualDiv.style.display = "none";
     listDiv.style.display = "flex";
 }
 
 function viewEditor() {
     listDiv.style.display = "none";
     readerDiv.style.display = "none";
-    guideDiv.style.display = "none";
+    manualDiv.style.display = "none";
     editorDiv.style.display = "flex";
 }
 
 function viewReader() {
     listDiv.style.display = "none";
     editorDiv.style.display = "none";
-    guideDiv.style.display = "none";
+    manualDiv.style.display = "none";
     readerDiv.style.display = "flex";
 }
 
-function viewGuide() {
+function viewManual() {
     listDiv.style.display = "none";
     editorDiv.style.display = "none";
     readerDiv.style.display = "none";
-    guideDiv.style.display = "flex";
+    manualDiv.style.display = "flex";
 }
